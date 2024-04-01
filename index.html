@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCG 3D Review</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link rel="icon" type="image/jpg" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSM_XZWaNz_wrgrle79Rd43XWrMXBxj28SDenwYbe-Oez_o-eFwStR4dhAQRr2hKmKluw&usqp=CAU"/>
+</head>
+<body>
+    <div class="container">
+        <section class="small">
+            <input type="checkbox" id="smallbot">
+            <label title="anterior" for="smallbot" class="smilzin">
+                <div id="smile"></div>
+                <script>
+                    const smile = document.getElementById('smile');
+                    smile.onclick = function() {
+                        smile.classList.toggle('active');
+                        images[currentImageIndex].classList.remove("cards-selected");
+                        currentImageIndex--;
+                        if(currentImageIndex < 0)
+                            currentImageIndex = 2;
+                        images[currentImageIndex].classList.add("cards-selected");
+                    }
+                </script>
+            </label>
+        </section>
+        <ul class="ca">
+            <li>
+                <a class="vani">
+                    <img class="cards" src="./img/teddiursa.png">
+                    <img class="cards" src="./img/rayquaza.png">
+                    <img class="cards" src="./img/charizard.png">
+                    <img class="cards" src="./img/hariyama.png">
+                    <img class="cards" src="./img/ledyba.png">
+                </a>
+            </li>
+        </ul>
+        <section class="direita">
+            <input type="checkbox" id="direitabot">
+            <label title="próxima" for="direitabot" class="direitinhzin">
+                <div id="dite"></div>
+                <script>
+                    const dite = document.getElementById('dite');
+                    let currentImageIndex = 0;
+                    const images = document.querySelectorAll('.cards');
+                    const max = images.length;
+                    console.log(images);
+                    dite.onclick = function() {
+                        dite.classList.toggle('active');
+                        images[currentImageIndex].classList.remove("cards-selected");
+                        currentImageIndex++;
+                        if(currentImageIndex >= max)
+                            currentImageIndex = 0;
+                        images[currentImageIndex].classList.add("cards-selected");
+                    }
+                </script>
+            </label>
+        </section>
+    </div>
+</body>
+
+<div class="textos">
+    <p>BETA. Os card visualizáveis são: Teddiursa, Rayquaza, Charizard e Ledyba.</p>
+    <p>Projeto será continuado assim que houver tempo.</p>
+    <p>Clique em alguma das setas para iniciar.</p>    
+</div>
+
+
+<script type="text/javascript" src="js/vanilla-tilt.min.js"></script>
+<script type="text/javascript">
+    VanillaTilt.init(document.querySelector(".vani"), {
+        max: 25,
+        speed: 400
+    });
+    VanillaTilt.init(document.querySelectorAll(".vani"));
+</script>
+</html>
